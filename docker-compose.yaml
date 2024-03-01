@@ -1,0 +1,10 @@
+services:
+  ffc-sfd-messages:
+    build:
+      context: .
+      target: production
+    image: ffc-sfd-messages
+    container_name: ffc-sfd-messages
+    environment:
+      APPINSIGHTS_CLOUDROLE: ffc-sfd-messages-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}

@@ -1,0 +1,3 @@
+services:
+  ffc-sfd-messages:
+    command: npm run start:debug
