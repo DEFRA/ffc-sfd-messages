@@ -12,4 +12,4 @@ async function createServer () {
 
   return server
 }
-module.exports = createServer
+module.exports = { createServer }
