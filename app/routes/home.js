@@ -9,9 +9,11 @@ module.exports = {
     handler: async (request, h) => {
       try {
         const messages = await Wreck.get(
-          `${serverConfig.messagesHost}/messages`
+          `${serverConfig.messagesHost}/messages`, {
+            json: true
+          }
         )
-        console.log(messages)
+        console.log(messages.payload)
         return h.view('home')
       } catch (err) {
         console.error(err)
