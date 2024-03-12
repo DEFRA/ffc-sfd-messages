@@ -7,9 +7,15 @@ module.exports = {
   path: '/',
   options: {
     handler: async (request, h) => {
-      const messages = await Wreck.get(`${serverConfig.messagesHost}/messages`)
-      console.log(messages)
-      return h.view('home')
+      try {
+        const messages = await Wreck.get(
+          `${serverConfig.messagesHost}/messages`
+        )
+        console.log(messages)
+        return h.view('home')
+      } catch (err) {
+        console.error(err)
+      }
     }
   }
 }
