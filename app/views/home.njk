@@ -43,10 +43,12 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
+              {% for message in messages %}
               <tr class="govuk-table__row action"> 
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="msg-vv-action">Annual Health and Welfare Review: claim your funding by 30 March 2024</a></td>
-                <td class="govuk-table__cell">6 March 2024</td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages">{{ message.content }}</a></td>
+                <td class="govuk-table__cell">31 February 2024</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
           <nav class="govuk-pagination govuk-pagination--block" role="navigation" aria-label="Pagination" data-module="ga4-link-tracker" data-ga4-link-tracker-module-started="true">
