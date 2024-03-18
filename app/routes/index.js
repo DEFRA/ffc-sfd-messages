@@ -13,7 +13,6 @@ module.exports = {
             json: true
           }
         )
-        console.log(response.payload)
         return h.view('home', { messages: response.payload })
       } catch (err) {
         console.error(err)
