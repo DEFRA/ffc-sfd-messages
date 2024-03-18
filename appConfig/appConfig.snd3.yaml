@@ -8,4 +8,4 @@
 - key: DATA_HOST
   value: "http://ffc-sfd-data.fcp-sfd"
 - key: MESSAGES_HOST
-  value: "https://ffc-sfd-messages-processor.fcp-sfd"
+  value: "http://ffc-sfd-messages-processor.fcp-sfd"
