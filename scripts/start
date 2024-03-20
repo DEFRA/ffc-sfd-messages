@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 if [ -z "$(docker network ls --filter name=^fcp-sfd$ --format={{.Name}})" ]; then
   echo "Creating ffc-sfd Docker network"
-  docker network create fcp-sfd
+  docker network create ffc-sfd
 fi
 
 set -e
