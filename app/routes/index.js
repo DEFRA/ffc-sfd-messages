@@ -14,7 +14,6 @@ module.exports = {
             json: true
           }
         )
-        console.log('Payload: ', response.payload)
         return h.view('home', { messages: response.payload })
       } catch (err) {
         console.error(err)
