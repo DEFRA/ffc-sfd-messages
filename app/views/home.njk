@@ -13,7 +13,7 @@
         Alpha
       </strong>
       <span class="govuk-phase-banner__text">
-        This is a new service - your <a class="govuk-link--no-visited-state" href="#">feedback</a> will help us to improve it.
+        This is a new service - your <a class="govuk-link--no-visited-state" href="app/views/message.njk">feedback</a> will help us to improve it.
       </span>
     </p>
   </div>
@@ -43,12 +43,16 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
+
               {% for message in messages %}
+
               <tr class="govuk-table__row action"> 
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages">{{ message.content }}</a></td>
-                <td class="govuk-table__cell">31 February 2024</td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/message-view?messageId={{ message.messageId }}">{{ message.content.heading }}</a></td>
+                <td class="govuk-table__cell">{{ message.requestedDate }}</td>
               </tr>
+
               {% endfor %}
+
             </tbody>
           </table>
           <nav class="govuk-pagination govuk-pagination--block" role="navigation" aria-label="Pagination" data-module="ga4-link-tracker" data-ga4-link-tracker-module-started="true">
@@ -68,4 +72,5 @@
       </div>
     </div>
   </div>
+  
 {% endblock %}
