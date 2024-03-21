@@ -1,14 +1,7 @@
 const { GET } = require('../constants/http-verbs')
 const Wreck = require('@hapi/wreck')
 const { serverConfig } = require('../config')
-
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  const day = date.getDate()
-  const month = date.toLocaleDateString('default', { month: 'long' })
-  const year = date.getFullYear()
-  return `${day} ${month} ${year}`
-}
+const { formatDate } = require('../utils/format-date')
 
 module.exports = {
   method: GET,
@@ -22,12 +15,13 @@ module.exports = {
             json: true
           }
         )
-        return h.view('home', {
+        const messageData = {
           messages: response.payload.map((message) => ({
             ...message,
             requestedDate: formatDate(message.requestedDate)
           }))
-        })
+        }
+        return h.view('home', { messageData })
       } catch (err) {
         console.error(err)
       }

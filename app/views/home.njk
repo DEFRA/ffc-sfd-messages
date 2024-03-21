@@ -44,10 +44,10 @@
             </thead>
             <tbody class="govuk-table__body">
 
-              {% for message in messages %}
+              {% for message in messageData.messages %}
 
               <tr class="govuk-table__row action"> 
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/{{ message.messadeId }}">{{ message.content.heading }}</a></td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/message/{{ message.messageId }}">{{ message.content.heading }}</a></td>
                 <td class="govuk-table__cell">{{ message.requestedDate }}</td>
               </tr>
 
