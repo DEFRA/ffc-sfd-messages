@@ -1,5 +1,6 @@
 const { GET } = require('../constants/http-verbs')
 const Wreck = require('@hapi/wreck')
+const ViewModel = require('./models/message')
 const { serverConfig } = require('../config')
 const { formatDate } = require('../utils/format-date')
 
@@ -15,13 +16,8 @@ module.exports = {
             json: true
           }
         )
-        const messageData = {
-          messages: response.payload.map((message) => ({
-            ...message,
-            requestedDate: formatDate(message.requestedDate)
-          }))
-        }
-        return h.view('home', { messageData })
+        console.log({ ...new ViewModel(response.payload) })
+        return h.view('home', { ...new ViewModel(response.payload) })
       } catch (err) {
         console.error(err)
       }
