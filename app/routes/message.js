@@ -14,9 +14,11 @@ module.exports = {
         { json: true }
       )
       const messageData = {
-        ...response.payload,
-        requestedDate: formatDate(response.payload.requestedDate)
+        ...response.payload.data,
+        requestedDate: formatDate(response.payload.data.requestedDate)
       }
+      console.log(messageData)
+
       return h.view('message', { messageData })
     } catch (error) {
       console.error(error)
