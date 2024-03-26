@@ -17,8 +17,6 @@ module.exports = {
         ...response.payload.data,
         requestedDate: formatDate(response.payload.data.requestedDate)
       }
-      console.log(notificationData)
-
       return h.view('message', { notificationData })
     } catch (error) {
       console.error(error)

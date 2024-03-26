@@ -15,7 +15,6 @@ module.exports = {
           ...notification,
           requestedDate: formatDate(notification.requestedDate)
         }))
-        console.log(notificationData)
         return h.view('home', { notificationData })
       } catch (err) {
         console.error(err)
