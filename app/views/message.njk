@@ -40,18 +40,18 @@
     <div class="govuk-grid-column-full">
 
       <span class="govuk-caption-l">Email from:</span>
-        <h1 class="govuk-heading-l">{{ messageData.scheme }}</h1>
+        <h1 class="govuk-heading-l">{{ notificationData.scheme }}</h1>
         
-        <p class="govuk-body-s govuk-!-margin-bottom-1">Sent {{ messageData.requestedDate }}</p>
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Sent {{ notificationData.requestedDate }}</p>
         <div class="govuk-summary-card">
           <div class="govuk-summary-card__title-wrapper">
             <h2 class="govuk-summary-card__title">
-              {{ messageData.content.heading }}
+              {{ notificationData.content.heading }}
             </h2>
           </div>
           <div class="govuk-summary-card__content">
             <p class="govuk-body">Claim number: AHWR 1234 5678</p>
-            <p class="govuk-body">{{ messageData.content.body }}</p>
+            <p class="govuk-body">{{ notificationData.content.body }}</p>
 
             <h2 class="govuk-heading-s">What happens next</h2>
             <p class="govuk-body">The Rural Payments Agency (RPA) may contact you to request the review summary the vet has given you.</p>

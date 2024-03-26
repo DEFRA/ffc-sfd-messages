@@ -11,12 +11,12 @@ module.exports = {
       try {
         const response = await Wreck.get(
           `${serverConfig.messagesHost}/messages`, { json: true })
-        const messageData = response.payload.data.map((message) => ({
-          ...message,
-          requestedDate: formatDate(message.requestedDate)
+        const notificationData = response.payload.data.map((notification) => ({
+          ...notification,
+          requestedDate: formatDate(notification.requestedDate)
         }))
-        console.log(messageData)
-        return h.view('home', { messageData })
+        console.log(notificationData)
+        return h.view('home', { notificationData })
       } catch (err) {
         console.error(err)
       }

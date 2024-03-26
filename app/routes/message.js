@@ -8,18 +8,18 @@ module.exports = {
   path: '/message/{id}',
   handler: async (request, h) => {
     try {
-      const messageId = request.params.id
+      const notificationId = request.params.id
       const response = await Wreck.get(
-        `${serverConfig.messagesHost}/messages/${messageId}`,
+        `${serverConfig.messagesHost}/messages/${notificationId}`,
         { json: true }
       )
-      const messageData = {
+      const notificationData = {
         ...response.payload.data,
         requestedDate: formatDate(response.payload.data.requestedDate)
       }
-      console.log(messageData)
+      console.log(notificationData)
 
-      return h.view('message', { messageData })
+      return h.view('message', { notificationData })
     } catch (error) {
       console.error(error)
     }
