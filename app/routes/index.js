@@ -10,7 +10,9 @@ module.exports = {
     handler: async (request, h) => {
       try {
         const response = await Wreck.get(
-          `${serverConfig.messagesHost}/messages`, { json: true })
+          `${serverConfig.messagesHost}/messages`,
+          { json: true }
+        )
         const notificationData = response.payload.data.map((notification) => ({
           ...notification,
           requestedDate: formatDate(notification.requestedDate)
