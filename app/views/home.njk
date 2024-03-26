@@ -1,4 +1,3 @@
- {# Backstage scaffolder to render the file as is and to skip this content to interpret as template   #}
 {% extends '_layout.njk' %}
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
@@ -6,6 +5,20 @@
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
 {% block beforeContent %}
+
+<div class="govuk-width-container app-width-container">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a class="govuk-link--no-visited-state" href="">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+</div>
+
   {{ govukBreadcrumbs({
     items: [
       {
@@ -13,46 +26,51 @@
         href: "#"
       }]
   }) }}
-{% endblock %}
+
+{% endblock beforeContent %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Your message history</h1>
+        <div class="govuk-grid-column-full">
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Message</th>
+                <th scope="col" class="govuk-table__header">Date received</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
 
-      <h1 class="govuk-heading-xl">ffc-sfd-messages</h1>
+              {% for notification in notificationData %}
 
-      <p class="govuk-body">
-        This is a demo application for the technical investigation of patterns and practices
-        in developing production quality containerised, cloud native, microservice based applications
-        within the ffc-sfd-messages.
-      </p>
- {# Backstage scaffolder to render the file as is and to skip this content to interpret as template   #}
-      {{ govukWarningText({
-        text: "This is not a real service and is for demonstration and investigation purposes only.",
-        iconFallbackText: "Warning"
-      }) }}
+              <tr class="govuk-table__row action"> 
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/message/{{ notification.messageId }}">{{ notification.content.heading }}</a></td>
+                <td class="govuk-table__cell">{{ notification.requestedDate }}</td>
+              </tr>
 
+              {% endfor %}
 
-      <h2 class="govuk-heading-m">Before you start</h2>
+            </tbody>
+          </table>
+          <nav class="govuk-pagination govuk-pagination--block" role="navigation" aria-label="Pagination" data-module="ga4-link-tracker" data-ga4-link-tracker-module-started="true">
 
-      <p class="govuk-body">This is a proof of concept sample application. </p>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Useful links
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a class="govuk-link" href="/">
-                Home
+            <div class="govuk-pagination__next">
+              <a class="govuk-link--no-visited-state govuk-pagination__link" href="#" rel="next" data-track-category="contentsClicked" data-track-action="next" data-track-label="#" data-track-dimension="next" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;previous and next&quot;,&quot;text&quot;:&quot;2 of 3&quot;,&quot;section&quot;:&quot;Next&quot;}">
+                <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                  <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                </svg>
+                  <span class="govuk-pagination__link-title">Next page</span>
+                  <span class="govuk-visually-hidden">:</span>
+                  <span class="govuk-pagination__link-label">1 of 2</span>
               </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
+            </div>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
+  
 {% endblock %}

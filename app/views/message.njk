@@ -1,0 +1,80 @@
+{% extends '_layout.njk' %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% block beforeContent %}
+
+<div class="govuk-width-container app-width-container">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Alpha
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a class="govuk-link--no-visited-state" href="#">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+</div>
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/messages"
+      },
+      {
+        text: "Your message history",
+        href: "/messages"
+      }
+    ]
+  }) }}
+
+{% endblock beforeContent %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">Email from:</span>
+        <h1 class="govuk-heading-l">{{ notificationData.scheme }}</h1>
+        
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Sent {{ notificationData.requestedDate }}</p>
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              {{ notificationData.content.heading }}
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <p class="govuk-body">Claim number: AHWR 1234 5678</p>
+            <p class="govuk-body">{{ notificationData.content.body }}</p>
+
+            <h2 class="govuk-heading-s">What happens next</h2>
+            <p class="govuk-body">The Rural Payments Agency (RPA) may contact you to request the review summary the vet has given you.</p>
+      
+            <h2 class="govuk-heading-s">Get help with your claim</h2>
+            <p class="govuk-body">Contact the RPA if you need to change the details of your claim.</p>
+              
+            <p class="govuk-body">Have your agreement number with you when you call or include it in your email.</p>
+            <ul class="govuk-list">
+              <li>Email: <a class="govuk-link" href="mailto:ruralpayments@defra.gov.uk">ruralpayments@defra.gov.uk</a></li>
+              <br>
+              <li>Telephone: 03000 200 301</li>
+              <li>Monday to Friday, 8:30am to 5pm, except bank holidays</li>
+            </ul>
+            <p class="govuk-body">Find out about call charges at <a href="https://www.gov.uk/call-charges"> https://www.gov.uk/call-charges</a></p>                      
+            <p class="govuk-body"><a class="govuk-link--no-visited-state" href="/messages">Find a record of your messages from Defra</a>. 
+            </p>
+
+        </div>
+      </div>
+    
+      
+    </div>
+  </div>
+
+{% endblock %}

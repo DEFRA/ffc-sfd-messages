@@ -8,7 +8,8 @@ const schema = Joi.object().keys({
   routePrefix: Joi.string().default('/messages'),
   authHost: Joi.string().required(),
   gatewayHost: Joi.string().required(),
-  dataHost: Joi.string().required()
+  dataHost: Joi.string().required(),
+  messagesHost: Joi.string().required()
 })
 
 const config = {
@@ -18,7 +19,8 @@ const config = {
   routePrefix: process.env.ROUTE_PREFIX,
   authHost: process.env.AUTH_HOST,
   gatewayHost: process.env.GATEWAY_HOST,
-  dataHost: process.env.DATA_HOST
+  dataHost: process.env.DATA_HOST,
+  messagesHost: process.env.MESSAGES_HOST
 }
 
 const { error, value } = schema.validate(config)
