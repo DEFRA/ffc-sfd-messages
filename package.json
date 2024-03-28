@@ -1,6 +1,6 @@
 {
   "name": "ffc-sfd-messages",
-  "version": "0.1.22",
+  "version": "0.1.25",
   "description": "",
   "homepage": "github.com?owner=defra&repo=ffc-sfd-messages&organization=defra",
   "main": "app/index.js",
@@ -17,7 +17,10 @@
     "start:nodemon": "nodemon --inspect=0.0.0.0 --ext css,js,njk --legacy-watch app/index.js"
   },
   "author": "Defra",
-  "contributors": [],
+  "contributors": [
+    "Simon Dunn simon.dunn1@defra.gov.uk",
+    "Rana Salem rana.salem@defra.gov.uk"
+  ],
   "license": "OGL-UK-3.0",
   "dependencies": {
     "@hapi/hapi": "21.3.2",
@@ -33,7 +36,7 @@
     "string-replace-loader": "3.1.0",
     "govuk-frontend": "5.2.0",
     "nunjucks": "3.2.4",
-    "ffc-auth": "0.1.0"
+    "ffc-auth": "0.12.0"
   },
   "devDependencies": {
     "blipp": "4.0.2",

@@ -3,4 +3,10 @@
 - key: PORT
   value: "3005"
 - key: APPINSIGHTS_CLOUDROLE
-  value: "{{serviceName}}"  
+  value: "{{serviceName}}"
+- key: DATA_HOST
+  value: "http://ffc-sfd-data.ffc-sfd/graphql"
+- key: AUTH_HOST
+  value: "http://ffc-sfd-auth.ffc-sfd"
+- key: MESSAGES_HOST
+  value: "http://ffc-sfd-messages-processor.ffc-sfd"

@@ -12,3 +12,4 @@ services:
       GATEWAY_HOST: ${GATEWAY_HOST:-http://localhost:3000}
       DATA_HOST: ${DATA_HOST:-http://ffc-sfd-data:3004/graphql}
       MESSAGES_HOST: ${MESSAGES_HOST:-http://ffc-sfd-messages-processor:3006}
+      AHWP_HOST: ${AHWP_HOST:-http://localhost:3010}

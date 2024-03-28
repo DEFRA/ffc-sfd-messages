@@ -1,5 +1,6 @@
  {# Backstage scaffolder to render the file as is and to skip this content to interpret as template #}
 {% extends "govuk/template.njk" %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
@@ -21,40 +22,41 @@
 {% endblock %}
 
 {% block header %}
-
-  
-  
-  
-
-  
   {{ govukHeader({
-      homepageUrl: "https://www.gov.uk/",
-      containerClasses: "govuk-width-container",
-      serviceName: serviceName,
-      serviceUrl: "/"
+    homepageUrl: "https://www.gov.uk/",
+    containerClasses: "govuk-width-container",
+    serviceName: serviceName,
+    serviceUrl: "/"
     }) }}
-  
+    <div class="govuk-grid-row govuk-width-container">
+      {{ govukPhaseBanner({
+        tag: {
+          text: "alpha"
+        },
+        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+      }) }}
+    </div>
+{% endblock %}
 
-
+{% block bodyStart %}
 {% endblock %}
 
 {% block pageTitle %}
   {{ pageTitle }}
 {% endblock %}
 
-{% block content %}
-  <h1 class="govuk-heading-xl">Default page template</h1>
+{% block beforeContent %}
+  {% if auth.isAuthenticated %}
+    <div class="gov-grid-row">
+      <div style="float:right;clear:both;text-align:right;">
+        <p class="govuk-body govuk-!-margin-bottom-0">Signed in as <a href="/home" class="govuk-link">{{ auth.credentials.name }}</a></p>
+        <p class="govuk-body"><a href="/auth/sign-out" class="govuk-link">Sign out</a></p>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}
 
-{% block footer %}
-
-  
-  
-  
-    {{ govukFooter() }}
-  
-
-
+{% block content %}
 {% endblock %}
 
 {% block bodyEnd %}
