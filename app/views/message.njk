@@ -1,38 +1,8 @@
 {% extends '_layout.njk' %}
 
-{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-{% block beforeContent %}
-
-<div class="govuk-width-container app-width-container">
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        Alpha
-      </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service - your <a class="govuk-link--no-visited-state" href="#">feedback</a> will help us to improve it.
-      </span>
-    </p>
-  </div>
-</div>
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/messages"
-      },
-      {
-        text: "Your message history",
-        href: "/messages"
-      }
-    ]
-  }) }}
-
-{% endblock beforeContent %}
 
 {% block content %}
 
