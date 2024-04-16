@@ -15,8 +15,8 @@ module.exports = {
         const organisation = await getOrganisation(request)
         const notifications = await getNotifications(organisation.sbi)
         return h.view('home', { notifications, organisation })
-      } catch (err) {
-        console.error(err)
+      } catch (error) {
+        console.log(error)
       }
     }
   }
