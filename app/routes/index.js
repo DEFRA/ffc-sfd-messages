@@ -13,26 +13,27 @@ module.exports = {
     handler: async (request, h) => {
       try {
         const organisation = await getOrganisation(request)
-        const notifications = await getNotifications()
+        const notifications = await getNotifications(organisation.sbi)
         return h.view('home', { notifications, organisation })
-      } catch (err) {
-        console.error(err)
+      } catch (error) {
+        console.log(error)
       }
     }
   }
 }
 
-const getNotifications = async () => {
+const getNotifications = async (sbi) => {
   const response = await Wreck.get(
-    `${serverConfig.messagesHost}/messages`,
-    { json: true }
+    `${serverConfig.messagesHost}/messages/${sbi}`,
+    {
+      json: true
+    }
   )
   return response.payload.data.map((notification) => ({
     ...notification,
     requestedDate: formatDate(notification.requestedDate)
   }))
 }
-
 
 const getOrganisation = async (request) => {
   const query = `query {
@@ -48,6 +49,7 @@ const getOrganisation = async (request) => {
             legalStatus
           }
         }`
+
   const { payload } = await Wreck.post(serverConfig.dataHost, {
     headers: {
       crn: request.auth.credentials.crn,
