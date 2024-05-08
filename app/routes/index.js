@@ -3,8 +3,6 @@ const { SFD_VIEW } = require('ffc-auth/scopes')
 const { AUTH_COOKIE_NAME } = require('../constants/cookies')
 const { GET } = require('../constants/http-verbs')
 const { serverConfig } = require('../config')
-// const { formatDate } = require('../utils/format-date')
-// const { server } = require('@hapi/hapi')
 
 module.exports = {
   method: GET,
@@ -14,8 +12,8 @@ module.exports = {
     handler: async (request, h) => {
       try {
         const organisation = await getOrganisation(request)
-        const notifications = await getNotifications(organisation.sbi)
-        return h.view('home', { notifications, organisation })
+        const notificationData = await getNotifications(organisation.sbi)
+        return h.view('home', { notificationData, organisation })
       } catch (error) {
         console.log(error)
       }
@@ -27,18 +25,24 @@ const getNotifications = async (sbi) => {
   try {
     const query = `query {
       notificationsBySbi(sbi: "${sbi}") {
+        sbi
         notifications {
+          id
           content
         }
       }
     }`
 
     const { payload } = await Wreck.post(serverConfig.dataHost, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
       payload: JSON.stringify({ query }),
       json: true
     })
 
-    return payload.data.notifications
+    console.log(payload.data.notificationsBySbi)
+    return payload.data.notificationsBySbi
   } catch (error) {
     console.log(error)
   }
