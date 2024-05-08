@@ -30,5 +30,3 @@ module.exports = [
     }
   }
 ]
-
-// this is a test commit
