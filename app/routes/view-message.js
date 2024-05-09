@@ -35,6 +35,5 @@ const getNotification = async (id) => {
     json: true
   })
 
-  console.log(payload.data.notification)
   return payload.data.notification
 }
