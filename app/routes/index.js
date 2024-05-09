@@ -41,7 +41,6 @@ const getNotifications = async (sbi) => {
       json: true
     })
 
-    console.log(payload.data.notificationsBySbi)
     return payload.data.notificationsBySbi
   } catch (error) {
     console.log(error)
