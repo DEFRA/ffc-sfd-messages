@@ -71,5 +71,6 @@ const getOrganisation = async (request) => {
     payload: JSON.stringify({ query }),
     json: true
   })
+
   return payload.data.organisation
 }
