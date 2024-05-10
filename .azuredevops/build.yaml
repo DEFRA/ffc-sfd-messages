@@ -52,5 +52,3 @@ extends:
       filetype: "yaml"
       variableGroups:
         - ffc-sfd-messages-<environment>
-      variables:
-        - ffc-sfd-messages-APPINSIGHTS-CONNECTIONSTRING
