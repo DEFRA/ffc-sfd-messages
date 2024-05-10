@@ -1,7 +1,6 @@
 const { GET } = require('../constants/http-verbs')
-const Wreck = require('@hapi/wreck')
-const { serverConfig } = require('../config')
 const { SFD_VIEW } = require('ffc-auth/scopes')
+const { getNotification } = require('../data')
 
 module.exports = {
   method: GET,
@@ -17,23 +16,4 @@ module.exports = {
       }
     }
   }
-}
-
-const getNotification = async (id) => {
-  const query = `query {
-    notification(notificationId: ${id}) {
-      id
-      content
-    }
-  }`
-
-  const { payload } = await Wreck.post(serverConfig.dataHost, {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    payload: JSON.stringify({ query }),
-    json: true
-  })
-
-  return payload.data.notification
 }
