@@ -8,7 +8,12 @@ const getNotifications = async (sbi) => {
         sbi
         notifications {
           id
-          content
+          scheme
+          tags
+          sbi
+          heading
+          body
+          requestedDate
         }
       }
     }`
