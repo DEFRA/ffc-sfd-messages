@@ -3,7 +3,7 @@ const { serverConfig } = require('../config')
 
 const getNotification = async (id) => {
   const query = `query {
-    notification(notificationId: ${id}) {
+    notification(id: ${id}) {
       id
       scheme
       tags
