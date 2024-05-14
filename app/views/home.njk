@@ -22,8 +22,10 @@
               {% for notification in notificationData.notifications %}
 
               <tr class="govuk-table__row action"> 
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/view-message/{{ notificationData.sbi }}/{{ notification.id }}">{{ notification.content }}</a></td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/messages/view-message/{{ notificationData.sbi }}/{{ notification.id }}">{{ notification.heading }}</a></td>
               </tr>
+
+              <td class="govuk-table__cell">{{ notification.requestedDate }}</td>
 
               {% endfor %}
 

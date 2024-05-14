@@ -5,7 +5,13 @@ const getNotification = async (id) => {
   const query = `query {
     notification(notificationId: ${id}) {
       id
-      content
+      scheme
+      tags
+      crn
+      sbi
+      heading
+      body
+      requestedDate
     }
   }`
 
