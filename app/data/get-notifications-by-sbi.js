@@ -10,6 +10,7 @@ const getNotifications = async (sbi) => {
           id
           scheme
           tags
+          crn
           sbi
           heading
           body
