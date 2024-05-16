@@ -4,7 +4,7 @@ const { serverConfig } = require('../config')
 const getNotification = async (id) => {
   try {
     const query = `query {
-      notification(id: ${id}) {
+      notification(id: "${id}") {
         id
         scheme
         tags
@@ -26,7 +26,7 @@ const getNotification = async (id) => {
 
     return payload.data.notification
   } catch (error) {
-    console.log(error)
+    throw new Error(error.message)
   }
 }
 

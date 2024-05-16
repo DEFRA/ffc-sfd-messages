@@ -13,7 +13,8 @@ module.exports = {
         const notificationData = await getNotifications(organisation.sbi)
         return h.view('home', { notificationData, organisation })
       } catch (error) {
-        console.log(error)
+
+        throw new Error(error.message)
       }
     }
   }
