@@ -30,7 +30,7 @@ const getOrganisation = async (request) => {
 
     return payload.data.organisation
   } catch (error) {
-    console.log(error)
+    throw new Error(error.message)
   }
 }
 

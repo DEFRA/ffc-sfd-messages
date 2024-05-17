@@ -29,7 +29,7 @@ const getNotifications = async (sbi) => {
 
     return payload.data.notificationsBySbi
   } catch (error) {
-    console.log(error)
+    throw new Error(error.message)
   }
 }
 

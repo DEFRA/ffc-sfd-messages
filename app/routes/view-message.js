@@ -12,7 +12,7 @@ module.exports = {
         const notificationData = await getNotification(request.params.id)
         return h.view('view-message', { notificationData })
       } catch (error) {
-        console.log(error)
+        throw new Error(error.message)
       }
     }
   }
