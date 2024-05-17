@@ -3,7 +3,7 @@ const routes = [].concat(
   require('../routes/healthy'),
   require('../routes/healthz'),
   require('../routes/assets'),
-  require('../routes/view-message')
+  require('../routes/notification')
 )
 
 module.exports = {
