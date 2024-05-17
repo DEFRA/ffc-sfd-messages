@@ -7,6 +7,4 @@ const formatDate = (dateString) => {
   return `${day} ${month} ${year}`
 }
 
-module.exports = {
-  formatDate
-}
+module.exports = formatDate

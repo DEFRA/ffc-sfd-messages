@@ -1,6 +1,6 @@
 const Wreck = require('@hapi/wreck')
 const { serverConfig } = require('../config')
-const { formatDate } = require('../utils/format-date')
+const { formatDate } = require('../utils')
 
 const getNotifications = async (sbi) => {
   try {
