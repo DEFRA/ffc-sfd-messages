@@ -1,5 +1,6 @@
 const Wreck = require('@hapi/wreck')
 const { serverConfig } = require('../config')
+const { formatDate } = require('../utils/format-date')
 
 const getNotification = async (id) => {
   try {
@@ -24,7 +25,12 @@ const getNotification = async (id) => {
       json: true
     })
 
-    return payload.data.notification
+    const notification = payload.data.notification
+    if (notification) {
+      notification.requestedDate = formatDate(notification.requestedDate)
+    }
+
+    return notification
   } catch (error) {
     throw new Error(error.message)
   }

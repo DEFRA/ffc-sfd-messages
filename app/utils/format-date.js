@@ -1,5 +1,6 @@
 const formatDate = (dateString) => {
-  const date = new Date(dateString)
+  const [dd, mm, yyyy] = dateString.split('-')
+  const date = new Date(`${yyyy}-${mm}-${dd}`)
   const day = date.getDate()
   const month = date.toLocaleDateString('default', { month: 'long' })
   const year = date.getFullYear()
