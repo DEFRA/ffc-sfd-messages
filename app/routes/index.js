@@ -11,9 +11,9 @@ module.exports = {
       try {
         const organisation = await getOrganisation(request)
         const notificationData = await getNotifications(organisation.sbi)
-        return h.view('home', { notificationData, organisation })
+        return h.view('index', { notificationData, organisation })
       } catch (error) {
-        console.log(error)
+        throw new Error(error.message)
       }
     }
   }
